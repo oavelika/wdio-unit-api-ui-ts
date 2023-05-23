@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+(
+    echo 'Error: Sorry, your test have not been passed'
+)
+npm run lint
