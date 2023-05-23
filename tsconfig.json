@@ -7,9 +7,43 @@
         "sourceMap": true,
         "outDir": "dist",
         "baseUrl": ".",
+        "types": [
+            "node",
+            "@wdio/globals/types"
+        ],
         "paths": {
             "*": [
                 "src/*"
+            ],
+            "pages": [
+                "src/pages"
+            ],
+            "Header": [
+                "./common/header.component"
+            ],
+            "SideMenu": [
+                "./common/sideMenu.component"
+            ],
+            "TitleComponent": [
+                "./common/title.component"
+            ],
+            "AddDoctorModal": [
+                "./doctors/add-doctor.component"
+            ],
+            "SpecialistCard": [
+                "./doctors/specialist-card.component"
+            ],
+            "CalendarComponent": [
+                "./schedule/calendar.component"
+            ],
+            "PreferenceControlComponent": [
+                "./preference/preference-control-container.component"
+            ],
+            "AddPatientComponent": [
+                "./patient/add-patient.component"
+            ],
+            "PatientCardComponent": [
+                "./patient/patient-card.component"
             ]
         }
     },
