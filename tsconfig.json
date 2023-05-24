@@ -5,51 +5,22 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "sourceMap": true,
-        "outDir": "dist",
-        "baseUrl": ".",
         "types": [
             "node",
             "@wdio/globals/types"
         ],
+        "baseUrl": "./src",
         "paths": {
-            "*": [
-                "src/*"
+            "@pages/*": [
+                "po/pages/*"
             ],
-            "pages": [
-                "src/pages"
-            ],
-            "Header": [
-                "./common/header.component"
-            ],
-            "SideMenu": [
-                "./common/sideMenu.component"
-            ],
-            "TitleComponent": [
-                "./common/title.component"
-            ],
-            "AddDoctorModal": [
-                "./doctors/add-doctor.component"
-            ],
-            "SpecialistCard": [
-                "./doctors/specialist-card.component"
-            ],
-            "CalendarComponent": [
-                "./schedule/calendar.component"
-            ],
-            "PreferenceControlComponent": [
-                "./preference/preference-control-container.component"
-            ],
-            "AddPatientComponent": [
-                "./patient/add-patient.component"
-            ],
-            "PatientCardComponent": [
-                "./patient/patient-card.component"
+            "@common/*": [
+                "po/components/common/*"
             ]
         }
     },
     "include": [
-        "api/**/*.ts",
-        "unit/**/*.ts",
+        "./src",
     ],
     "exclude": [
         "node_modules"

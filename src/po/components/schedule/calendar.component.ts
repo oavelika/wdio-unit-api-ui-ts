@@ -1,4 +1,4 @@
-const BaseComponent = require('../common/base.component');
+import { BaseComponent } from '../common/base.component';
 
 class CalendarComponent extends BaseComponent {
     constructor() {
@@ -6,4 +6,4 @@ class CalendarComponent extends BaseComponent {
     }
 }
 
-module.exports = CalendarComponent;
+export { CalendarComponent };

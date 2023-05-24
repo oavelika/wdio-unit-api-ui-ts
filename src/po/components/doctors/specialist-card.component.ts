@@ -1,4 +1,4 @@
-const BaseComponent = require("../common/base.component");
+import { BaseComponent } from "../common/base.component";
 
 class SpecialistCardComponent extends BaseComponent {
 
@@ -16,4 +16,4 @@ class SpecialistCardComponent extends BaseComponent {
 
 }
 
-module.exports = SpecialistCardComponent;
+export { SpecialistCardComponent };

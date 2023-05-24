@@ -1,4 +1,4 @@
-const BaseComponent = require('../common/base.component');
+import { BaseComponent } from '../common/base.component';
 
 class PatientCardComponent extends BaseComponent {
     constructor(id) {
@@ -20,4 +20,4 @@ class PatientCardComponent extends BaseComponent {
 
 }
 
-module.exports = PatientCardComponent;
+export { PatientCardComponent };

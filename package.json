@@ -9,7 +9,7 @@
     "api": "npx mocha api/specs/test.spec.ts",
     "unit": "npx mocha unit/**.test.ts",
     "prepare": "husky install",
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./src/config/wdio.conf.ts"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@types/mocha": "^10.0.1",
+    "@wdio/types": "^8.10.4",
     "axios": "^1.4.0",
     "chai": "^4.3.7",
     "mocha": "^10.2.0",

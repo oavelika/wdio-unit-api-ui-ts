@@ -1,10 +1,9 @@
-const BasePage = require('./base.page');
+import { BasePage } from './base.page';
 
-class DashboardPage extends BasePage {
+export class DashboardPage extends BasePage {
 
     constructor() {
         super("#/dashboard");
-    };
+    }
 }
 
-module.exports = DashboardPage;

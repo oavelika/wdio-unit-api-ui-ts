@@ -1,7 +1,7 @@
-const { AddPatientComponent, PatientCardComponent, TitleComponent } = require('../components');
-const BasePage = require('./base.page');
+import { AddPatientComponent, PatientCardComponent, TitleComponent } from '../components';
+import { BasePage } from './base.page';
 
-class PatientPage extends BasePage {
+export class PatientsPage extends BasePage {
 
     constructor() {
         super("#/patients");
@@ -14,4 +14,3 @@ class PatientPage extends BasePage {
     }
 }
 
-module.exports = PatientPage;

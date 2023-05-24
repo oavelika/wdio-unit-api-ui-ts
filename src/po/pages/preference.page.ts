@@ -1,8 +1,8 @@
 const { PreferenceControlComponent, TitleComponent } = require('../components');
 
-const BasePage = require('./base.page');
+import { BasePage } from './base.page';
 
-class PreferencePage extends BasePage {
+export class PreferencePage extends BasePage {
 
     constructor() {
         super("#/preference");
@@ -11,4 +11,4 @@ class PreferencePage extends BasePage {
     };
 }
 
-module.exports = PreferencePage;
+

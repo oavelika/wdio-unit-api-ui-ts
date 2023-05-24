@@ -1,5 +1,8 @@
-import { Header, SideMenu, TitleComponent } from '../components';
+//import { Header, SideMenu, TitleComponent } from '../components';
+import { Header, SideMenu, TitleComponent } from '@common/*';
 
+
+import { BaseComponent } from '@common/BaseComponent'
 
 class BasePage {
     constructor(url) {

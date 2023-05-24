@@ -1,4 +1,4 @@
-const BaseComponent = require('../common/base.component');
+import { BaseComponent } from '../common/base.component';
 
 class PreferenceControlComponent extends BaseComponent {
     constructor() {
@@ -17,4 +17,4 @@ class PreferenceControlComponent extends BaseComponent {
     }
 }
 
-module.exports = PreferenceControlComponent;
+export { PreferenceControlComponent };

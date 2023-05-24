@@ -1,7 +1,7 @@
-const { CalendarComponent } = require('../components');
-const BasePage = require('./base.page');
+import { CalendarComponent } from '../components';
+import { BasePage } from './base.page';
 
-class SchedulePage extends BasePage {
+export class SchedulePage extends BasePage {
 
     constructor() {
         super("#/calendar");
@@ -9,4 +9,3 @@ class SchedulePage extends BasePage {
     };
 }
 
-module.exports = SchedulePage;

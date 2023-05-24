@@ -1,4 +1,4 @@
-class BaseComponent {
+export class BaseComponent {
     rootSelector: string
 
     constructor(rootSelector) {
@@ -10,4 +10,3 @@ class BaseComponent {
     }
 }
 
-export { BaseComponent };
