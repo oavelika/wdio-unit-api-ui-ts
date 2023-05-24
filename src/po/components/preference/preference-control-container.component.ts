@@ -1,11 +1,11 @@
-import { BaseComponent } from '../common/base.component';
+import { BaseComponent } from '@common/base.component';
 
-class PreferenceControlComponent extends BaseComponent {
+export class PreferenceControlComponent extends BaseComponent {
     constructor() {
         super('.preference-container');
     }
 
-    label(name) {
+    label(name: string) {
         const selectors = {
             view: "//div[.='Default ViewWeekly']",
             startTime: "//div[.='Calendar Start Time']",
@@ -17,4 +17,4 @@ class PreferenceControlComponent extends BaseComponent {
     }
 }
 
-export { PreferenceControlComponent };
+
