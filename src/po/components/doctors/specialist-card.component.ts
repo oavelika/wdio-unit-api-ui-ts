@@ -1,8 +1,8 @@
-import { BaseComponent } from "../common/base.component";
+import { BaseComponent } from "@common/base.component";
 
-class SpecialistCardComponent extends BaseComponent {
+export class SpecialistCardComponent extends BaseComponent {
 
-    constructor(id) {
+    constructor(id: number) {
         super(`#Specialist_${id}`);
     }
 
@@ -16,4 +16,4 @@ class SpecialistCardComponent extends BaseComponent {
 
 }
 
-export { SpecialistCardComponent };
+

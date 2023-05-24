@@ -1,6 +1,6 @@
-import { BaseComponent } from '../common/base.component';
+import { BaseComponent } from '@common/base.component';
 
-class AddDoctorComponent extends BaseComponent {
+export class AddDoctorComponent extends BaseComponent {
     constructor() {
         super('.e-control.new-doctor-dialog');
     }
@@ -15,7 +15,7 @@ class AddDoctorComponent extends BaseComponent {
      * @returns {*}
      */
 
-    input(name) {
+    input(name: string) {
         const selectors = {
             name: '[name="Name"]',
             phone: '#DoctorMobile',
@@ -26,7 +26,7 @@ class AddDoctorComponent extends BaseComponent {
 
     }
 
-    errorMessage(msg) {
+    errorMessage(msg: string) {
         const selectors = {
             name: '#Name-info',
             phone: '#undefined-info',
@@ -38,4 +38,4 @@ class AddDoctorComponent extends BaseComponent {
     }
 }
 
-export { AddDoctorComponent };
+
