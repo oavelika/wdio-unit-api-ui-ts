@@ -14,8 +14,8 @@
             "@pages/*": [
                 "po/pages/*"
             ],
-            "@common/*": [
-                "po/components/common/*"
+            "@components": [
+                "po/components"
             ]
         }
     },

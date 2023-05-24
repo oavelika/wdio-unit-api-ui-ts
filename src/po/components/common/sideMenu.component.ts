@@ -1,6 +1,6 @@
-import { BaseComponent } from "./base.component";
+import { BaseComponent } from "@components";
 
-class SideMenuComponent extends BaseComponent {
+export class SideMenuComponent extends BaseComponent {
 
     constructor() {
         super('.planner-wrapper #plannerSiderBar');
@@ -23,4 +23,3 @@ class SideMenuComponent extends BaseComponent {
     }
 }
 
-export { SideMenuComponent };

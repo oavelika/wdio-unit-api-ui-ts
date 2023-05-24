@@ -1,11 +1,13 @@
 //import { Header, SideMenu, TitleComponent } from '../components';
-import { Header, SideMenu, TitleComponent } from '@common/*';
-
-
-import { BaseComponent } from '@common/BaseComponent'
+import { Header, SideMenu, TitleComponent } from '../components';
 
 class BasePage {
-    constructor(url) {
+    url: string
+    header: object
+    sideMenu: object
+    title: object
+
+    constructor(url: string) {
         this.url = url;
         this.header = new Header();
         this.sideMenu = new SideMenu();

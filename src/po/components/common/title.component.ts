@@ -1,12 +1,12 @@
-import { BaseComponent } from "./base.component";
+import { BaseComponent } from "@components";
 
-class TitleComponent extends BaseComponent {
+export class TitleComponent extends BaseComponent {
 
     constructor() {
         super('.e-content-animation');
     }
 
-    item(param) {
+    item(param: string) {
         const selectors = {
             doctors: 'app-doctors',
             patients: 'app-patients',
@@ -24,4 +24,3 @@ class TitleComponent extends BaseComponent {
     }
 }
 
-export { TitleComponent };

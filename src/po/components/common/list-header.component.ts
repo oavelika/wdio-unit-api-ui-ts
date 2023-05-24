@@ -1,6 +1,6 @@
-import { BaseComponent } from "./base.component";
+import { BaseComponent } from "@components";
 
-class HeaderComponent extends BaseComponent {
+export class HeaderComponent extends BaseComponent {
 
     constructor() {
         super('.e-content-animation .planner-header');
@@ -12,4 +12,4 @@ class HeaderComponent extends BaseComponent {
     }
 }
 
-export { HeaderComponent };
+

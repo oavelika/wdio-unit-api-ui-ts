@@ -1,11 +1,11 @@
-const DashboardPage = require("./dashboard.page");
-const DoctorsPage = require("./doctors.page");
-const SchedulePage = require("./schedule.page");
-const PreferencePage = require("./preference.page");
-const PatientPage = require("./patient.page");
+import { DashboardPage } from "./dashboard.page";
+import { DoctorsPage } from "./doctors.page";
+import { SchedulePage } from "./schedule.page";
+import { PreferencePage } from "./preference.page";
+import { PatientsPage } from "./patients.page";
 
 /**
- * @param nome {'dashboard' | 'doctors'}
+ * @param name {'dashboard' | 'doctors'}
  * @returns {DashboardPage | DoctorsPage}
  */
 
@@ -15,7 +15,7 @@ function page(name) {
         doctors: new DoctorsPage(),
         schedule: new SchedulePage(),
         preference: new PreferencePage(),
-        patient: new PatientPage()
+        patients: new PatientsPage()
     };
 
     return items[name.toLowerCase()];

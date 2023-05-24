@@ -1,4 +1,4 @@
-import { BaseComponent } from '@common/base.component';
+import { BaseComponent } from '@components';
 
 export class PatientCardComponent extends BaseComponent {
     constructor(id: number) {
