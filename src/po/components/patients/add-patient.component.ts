@@ -1,6 +1,6 @@
-import { BaseComponent } from '../common/base.component';
+import { BaseComponent } from '@common/base.component';
 
-class AddPatientComponent extends BaseComponent {
+export class AddPatientComponent extends BaseComponent {
     constructor() {
         super('.new-patient-dialog');
     }
@@ -15,7 +15,7 @@ class AddPatientComponent extends BaseComponent {
      * @returns {*}
      */
 
-    input(name) {
+    input(name: string) {
         const selectors = {
             name: '[name="Name"]',
             phone: '#PatientMobile',
@@ -26,4 +26,3 @@ class AddPatientComponent extends BaseComponent {
     }
 }
 
-export { AddPatientComponent };

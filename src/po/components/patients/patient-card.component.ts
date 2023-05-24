@@ -1,7 +1,7 @@
-import { BaseComponent } from '../common/base.component';
+import { BaseComponent } from '@common/base.component';
 
-class PatientCardComponent extends BaseComponent {
-    constructor(id) {
+export class PatientCardComponent extends BaseComponent {
+    constructor(id: number) {
         super(`.e-row[aria-rowindex="${id}"]`);
     }
 
@@ -20,4 +20,3 @@ class PatientCardComponent extends BaseComponent {
 
 }
 
-export { PatientCardComponent };
