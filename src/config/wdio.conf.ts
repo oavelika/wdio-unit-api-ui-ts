@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Options } from '@wdio/types'
+import allure from 'allure-commandline';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
 
 export const config: Options.Testrunner = {
     //
@@ -14,8 +19,8 @@ export const config: Options.Testrunner = {
             transpileOnly: true
         }
     },
-    
-    
+
+
     //
     // ==================
     // Specify Test Files
@@ -34,6 +39,7 @@ export const config: Options.Testrunner = {
     //
     specs: [
         // ToDo: define location for spec files here
+        '../tests/main-test.spec.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -63,7 +69,17 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+        // or "firefox", "microsoftedge", "safari"
+
+        maxInstances: 1,
+        browserName: 'chrome',
+        acceptInsecureCerts: true
+    },
+    {
+        maxInstances: 1,
+        browserName: 'firefox',
+        acceptInsecureCerts: true
+
     }],
     //
     // ===================
@@ -96,7 +112,7 @@ export const config: Options.Testrunner = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: 'https://ej2.syncfusion.com/showcase/angular/appointmentplanner/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -112,8 +128,8 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver','geckodriver','edgedriver','safaridriver'],
-    
+    services: ['chromedriver', 'geckodriver', 'edgedriver', 'safaridriver'],
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -134,9 +150,27 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec',
+        [
+            'allure',
+            {
+                outputDir: './artifacts/allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+            }
+        ],
+        [
+            'junit',
+            {
+                outputDir: "./artifacts/report",
+                outputFileFormat(options) {
+                    return `result-${options.cid}.xml`;
+                },
+            },
+        ],
+    ],
 
-    
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -203,8 +237,16 @@ export const config: Options.Testrunner = {
      * @param {string} commandName hook command name
      * @param {Array} args arguments that command would receive
      */
-    // beforeCommand: function (commandName, args) {
-    // },
+    before(capabilities, specs) {
+        // Add commands to WebdriverIO
+        return browser.addCommand("waitAndClick", async function () {
+            await this.waitForDisplayed();
+            console.log('I AM WAITING');
+            await this.click();
+            console.log('I CLICKED');
+        }, true);
+    },
+
     /**
      * Hook that gets executed before the suite starts
      * @param {object} suite suite details
@@ -238,8 +280,21 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    async afterTest(test, context, { error, result, duration, passed, retries }) {
+        // take a screenshot anytime a test fails and throws an error
+        if (error) {
+            console.log(`Screenshot for the failed test ${test.title} is saved`);
+            const filename = test.title + '.png';
+            const dirPath = path.join('./artifacts/screenshots/');
+            if (!fs.existsSync(dirPath)) {
+                fs.mkdirSync(dirPath, {
+                    recursive: true,
+                });
+            }
+            await browser.saveScreenshot(dirPath + filename);
+        }
+    },
+
 
 
     /**
@@ -282,8 +337,22 @@ export const config: Options.Testrunner = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete(exitCode, config, capabilities, results) {
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', 'allure-results', '--clean']);
+        return new Promise<void>((resolve, reject) => {
+            const generationTimeout = setTimeout(() => reject(reportError), 5000);
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout);
+                if (exitCode !== 0) {
+                    return reject(reportError);
+                }
+                console.log('Allure report successfully generated');
+                return resolve();
+            });
+        });
+    }
+
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

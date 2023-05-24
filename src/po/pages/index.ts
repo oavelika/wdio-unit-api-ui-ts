@@ -9,7 +9,7 @@ import { PatientsPage } from "./patients.page";
  * @returns {DashboardPage | DoctorsPage}
  */
 
-function page(name) {
+function page(name: string) {
     const items = {
         dashboard: new DashboardPage(),
         doctors: new DoctorsPage(),
@@ -21,7 +21,7 @@ function page(name) {
     return items[name.toLowerCase()];
 }
 
-module.exports = {
+export {
     DashboardPage,
     DoctorsPage,
     SchedulePage,

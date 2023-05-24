@@ -11,8 +11,8 @@
         ],
         "baseUrl": "./src",
         "paths": {
-            "@pages/*": [
-                "po/pages/*"
+            "@pages": [
+                "po/pages"
             ],
             "@components": [
                 "po/components"
@@ -21,6 +21,7 @@
     },
     "include": [
         "./src",
+        "./"
     ],
     "exclude": [
         "node_modules"
