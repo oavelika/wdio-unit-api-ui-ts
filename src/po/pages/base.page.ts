@@ -1,7 +1,6 @@
-//import { Header, SideMenu, TitleComponent } from '../components';
-import { Header, SideMenu, TitleComponent } from '../components';
+import { Header, SideMenu, TitleComponent } from '@components';
 
-class BasePage {
+export class BasePage {
     url: string
     header: object
     sideMenu: object
@@ -18,8 +17,5 @@ class BasePage {
         return browser.url(this.url);
     }
 }
-
-export { BasePage };
-
 
 

@@ -1,6 +1,5 @@
-import { PreferenceComponent, TitleComponent } from '../components';
-
-import { BasePage } from './base.page';
+import { PreferenceComponent, TitleComponent } from '@components';
+import { BasePage } from '@pages';
 
 export class PreferencePage extends BasePage {
     preferenceTitle: object | string

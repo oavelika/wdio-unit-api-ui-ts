@@ -1,4 +1,4 @@
-import { BasePage } from './base.page';
+import { BasePage } from '@pages';
 
 export class DashboardPage extends BasePage {
 

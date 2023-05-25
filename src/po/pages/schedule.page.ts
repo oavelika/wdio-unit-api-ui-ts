@@ -1,5 +1,5 @@
-import { CalendarComponent } from '../components';
-import { BasePage } from './base.page';
+import { CalendarComponent } from '@components';
+import { BasePage } from '@pages';
 
 export class SchedulePage extends BasePage {
     calendar: object | string

@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
-import { page } from '@pages';
+import { page } from '../po/pages';
 
 describe("Test suite", () => {
     beforeEach(async () => {

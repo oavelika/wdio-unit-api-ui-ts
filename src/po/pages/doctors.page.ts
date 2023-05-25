@@ -1,5 +1,5 @@
-import { AddDoctorModal, SpecialistCard, TitleComponent } from '../components';
-import { BasePage } from './base.page';
+import { AddDoctorModal, SpecialistCard, TitleComponent } from '@components';
+import { BasePage } from '@pages';
 
 export class DoctorsPage extends BasePage {
     doctorsListHeader: object | string

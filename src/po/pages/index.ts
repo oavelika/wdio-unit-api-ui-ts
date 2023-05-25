@@ -3,6 +3,7 @@ import { DoctorsPage } from "./doctors.page";
 import { SchedulePage } from "./schedule.page";
 import { PreferencePage } from "./preference.page";
 import { PatientsPage } from "./patients.page";
+import { BasePage } from './base.page'
 
 /**
  * @param name {'dashboard' | 'doctors'}
@@ -22,6 +23,7 @@ function page(name: string) {
 }
 
 export {
+    BasePage,
     DashboardPage,
     DoctorsPage,
     SchedulePage,

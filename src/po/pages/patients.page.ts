@@ -1,5 +1,5 @@
-import { AddPatientComponent, PatientCardComponent, TitleComponent } from '../components';
-import { BasePage } from './base.page';
+import { AddPatientComponent, PatientCardComponent, TitleComponent } from '@components';
+import { BasePage } from '@pages';
 
 export class PatientsPage extends BasePage {
     addPatient: object | string
