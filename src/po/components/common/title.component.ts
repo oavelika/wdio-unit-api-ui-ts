@@ -1,4 +1,4 @@
-import { BaseComponent } from "@components";
+import { BaseComponent } from "@basecomponent";
 
 export class TitleComponent extends BaseComponent {
 
@@ -6,7 +6,7 @@ export class TitleComponent extends BaseComponent {
         super('.e-content-animation');
     }
 
-    item(param: string) {
+    item(param) {
         const selectors = {
             doctors: 'app-doctors',
             patients: 'app-patients',

@@ -1,12 +1,12 @@
 import { Header, SideMenu, TitleComponent } from '@components';
 
-export class BasePage {
+class BasePage {
     url: string
     header: object
     sideMenu: object
     title: object
 
-    constructor(url: string) {
+    constructor(url) {
         this.url = url;
         this.header = new Header();
         this.sideMenu = new SideMenu();
@@ -18,4 +18,4 @@ export class BasePage {
     }
 }
 
-
+export { BasePage } 

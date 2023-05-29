@@ -1,4 +1,4 @@
-import { BaseComponent } from '@components';
+import { BaseComponent } from '@basecomponent';
 
 export class AddDoctorComponent extends BaseComponent {
     constructor() {
@@ -15,7 +15,7 @@ export class AddDoctorComponent extends BaseComponent {
      * @returns {*}
      */
 
-    input(name: string) {
+    input(name) {
         const selectors = {
             name: '[name="Name"]',
             phone: '#DoctorMobile',
@@ -26,7 +26,7 @@ export class AddDoctorComponent extends BaseComponent {
 
     }
 
-    errorMessage(msg: string) {
+    errorMessage(msg) {
         const selectors = {
             name: '#Name-info',
             phone: '#undefined-info',

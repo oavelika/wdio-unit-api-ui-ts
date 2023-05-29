@@ -1,4 +1,10 @@
 {
+    "ts-node": {
+        // Do not forget to `npm i -D tsconfig-paths`
+        "require": [
+            "tsconfig-paths/register"
+        ]
+    },
     "compilerOptions": {
         "module": "commonjs",
         "target": "es6",
@@ -7,17 +13,25 @@
         "sourceMap": true,
         "types": [
             "node",
-            "@wdio/globals/types"
+            "@wdio/globals/types",
+            "@wdio/mocha-framework"
         ],
-        "baseUrl": "./src",
+        "baseUrl": "./",
         "paths": {
             "@pages": [
-                "po/pages"
+                "src/po/pages"
             ],
             "@components": [
-                "po/components"
+                "src/po/components"
+            ],
+            "@basepage": [
+                "src/po/pages/base.page.ts"
+            ],
+            "@basecomponent": [
+                "src/po/components/common/base.component"
             ]
-        }
+        },
+        "moduleResolution": "node"
     },
     "include": [
         "./src/*",

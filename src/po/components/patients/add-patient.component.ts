@@ -1,4 +1,4 @@
-import { BaseComponent } from '@components';
+import { BaseComponent } from '@basecomponent';
 
 export class AddPatientComponent extends BaseComponent {
     constructor() {
@@ -15,7 +15,7 @@ export class AddPatientComponent extends BaseComponent {
      * @returns {*}
      */
 
-    input(name: string) {
+    input(name) {
         const selectors = {
             name: '[name="Name"]',
             phone: '#PatientMobile',

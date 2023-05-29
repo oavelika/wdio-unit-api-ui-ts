@@ -10,7 +10,7 @@ import { BasePage } from './base.page'
  * @returns {DashboardPage | DoctorsPage}
  */
 
-function page(name: string) {
+function page(name) {
     const items = {
         dashboard: new DashboardPage(),
         doctors: new DoctorsPage(),

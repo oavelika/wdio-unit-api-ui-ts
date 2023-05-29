@@ -1,4 +1,4 @@
-import { BaseComponent } from "@components";
+import { BaseComponent } from "@basecomponent";
 
 export class SideMenuComponent extends BaseComponent {
 

@@ -1,7 +1,7 @@
 export class BaseComponent {
     rootSelector: string
 
-    constructor(rootSelector: string) {
+    constructor(rootSelector) {
         this.rootSelector = rootSelector;
     }
 

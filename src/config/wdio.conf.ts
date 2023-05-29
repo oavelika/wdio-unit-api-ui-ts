@@ -15,7 +15,7 @@ export const config: Options.Testrunner = {
     autoCompileOpts: {
         autoCompile: true,
         tsNodeOpts: {
-            project: './tsconfig.e2e.json',
+            project: '../../tsconfig.json',
             transpileOnly: true
         }
     },
@@ -39,7 +39,7 @@ export const config: Options.Testrunner = {
     //
     specs: [
         // ToDo: define location for spec files here
-        '../tests/main-test.spec.ts'
+        '../tests/**'
     ],
     // Patterns to exclude.
     exclude: [
@@ -74,16 +74,17 @@ export const config: Options.Testrunner = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['headless', 'disable-gpu']
+            args: ['disable-gpu']
         },
         acceptInsecureCerts: true
     },
-    {
-        maxInstances: 1,
-        browserName: 'firefox',
-        acceptInsecureCerts: true
+        // {
+        //     maxInstances: 1,
+        //     browserName: 'firefox',
+        //     acceptInsecureCerts: true
 
-    }],
+        // }
+    ],
     //
     // ===================
     // Test Configurations

@@ -1,5 +1,5 @@
 import { AddPatientComponent, PatientCardComponent, TitleComponent } from '@components';
-import { BasePage } from '@pages';
+import { BasePage } from '@basepage';
 
 export class PatientsPage extends BasePage {
     addPatient: object | string

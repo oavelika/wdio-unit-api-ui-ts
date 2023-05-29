@@ -1,18 +1,17 @@
 import { AddDoctorModal, SpecialistCard, TitleComponent } from '@components';
-import { BasePage } from '@pages';
+import { BasePage } from '@basepage';
 
 export class DoctorsPage extends BasePage {
-    doctorsListHeader: object | string
-    addDoctorsModal: object | string
+    doctorsListHeader
+    addDoctorsModal
 
     constructor() {
         super("#/doctors");
         this.doctorsListHeader = new TitleComponent();
         this.addDoctorsModal = new AddDoctorModal();
-
     }
 
-    specialistCard(id: number) {
+    specialistCard(id) {
         return new SpecialistCard(id);
     }
 }
