@@ -43,10 +43,10 @@ describe("Test suite", () => {
         const errorPhone = await pages('doctors').addDoctorsModal.errorMessage('phone').getText();
         const errorEducation = await pages('doctors').addDoctorsModal.errorMessage('education').getText();
 
-        await expect(errorName).to.be.equal('Enter valid name');
-        await expect(errorEmail).to.be.equal('Enter valid email');
-        await expect(errorPhone).to.be.equal('Enter valid mobile number');
-        await expect(errorEducation).to.be.equal('Enter valid education');
+        await expect(errorName).to.be.equal('Enter valid name', `Valid Error name message doesnt exist`);
+        await expect(errorEmail).to.be.equal('Enter valid email, `Valid Error email message doesnt exist`');
+        await expect(errorPhone).to.be.equal('Enter valid mobile number, `Valid Error mobile message doesnt exist`');
+        await expect(errorEducation).to.be.equal('Enter valid education', `Valid Error education message doesnt exist`);
 
     });
 
@@ -88,8 +88,8 @@ describe("Test suite", () => {
         const getDoctorName = await pages('doctors').specialistCard(8).name.getText();
         const getDoctorEducation = await pages('doctors').specialistCard(8).education.getText();
 
-        await expect(getDoctorName).to.be.equal(`Dr. ${docName}`);
-        await expect(getDoctorEducation).to.be.equal(docEducation);
+        await expect(getDoctorName).to.be.equal(`Dr. ${docName}`, `Doctors name doesnt equal expected doctor's name`);
+        await expect(getDoctorEducation).to.be.equal(docEducation, `Doctors education doesnt equal expected doctor's name`);
 
     });
 
@@ -115,16 +115,16 @@ describe("Test suite", () => {
         await pages('preference').preferenceControl.rootEl.waitForDisplayed();
 
         const defaultViewEl = await pages('preference').preferenceControl.label('view').getText();
-        await expect(defaultViewEl).to.be.equal('Default View');
+        await expect(defaultViewEl).to.be.equal('Default View', `Default View text doesnt exist on the preference page`);
 
         const calendarStartTimeEl = await pages('preference').preferenceControl.label('startTime').getText();
-        await expect(calendarStartTimeEl).to.be.equal('Calendar Start Time');
+        await expect(calendarStartTimeEl).to.be.equal('Calendar Start Time', `Calendar Start Time text doesnt exist on the preference page`);
 
         const calendarEndTimeEl = await pages('preference').preferenceControl.label('endTime').getText();
-        await expect(calendarEndTimeEl).to.be.equal('Calendar End Time');
+        await expect(calendarEndTimeEl).to.be.equal('Calendar End Time', `Calendar End Time text doesnt exist on the preference page`);
 
         const slotDurationEl = await pages('preference').preferenceControl.label('duration').getText();
-        await expect(slotDurationEl).to.be.equal('Slot Duration');
+        await expect(slotDurationEl).to.be.equal('Slot Duration', `Slot Duration text doesnt exist on the preference page`);
 
     });
 
@@ -156,8 +156,8 @@ describe("Test suite", () => {
         const getPatientName = await pages('patients').patientCard(7).name.getText();
         const getPatientEmail = await pages('patients').patientCard(7).email.getText();
 
-        await expect(getPatientName).to.be.equal(patienName);
-        await expect(getPatientEmail).to.be.equal(patientEmail);
+        await expect(getPatientName).to.be.equal(patienName, `patient name didnt equal created patient`);
+        await expect(getPatientEmail).to.be.equal(patientEmail, `patient email didnt equal created patient`);
 
     });
 
@@ -167,7 +167,7 @@ describe("Test suite", () => {
         // Verify that the Title exists
 
         const getTitle = await browser.getTitle();
-        expect(getTitle).to.be.equal('Appointment Planner - Syncfusion Angular Components Showcase App');
+        expect(getTitle).to.be.equal('Appointment Planner - Syncfusion Angular Components Showcase App', `title name doesnt equal title name`);
 
     });
 
@@ -179,7 +179,7 @@ describe("Test suite", () => {
         await pages('dashboard').sideMenu.item('patients').waitAndClick();
 
         const listItems = await $$('[aria-rowindex]');
-        expect(listItems).to.be.a('array').to.have.length(7);
+        expect(listItems).to.be.a('array', `patient list is not an array`).to.have.length(7, `patient list is not have length 7`);
     });
 
     it("Verify that the Link contains a text", async () => {
@@ -188,7 +188,7 @@ describe("Test suite", () => {
         // Verify that the Link contains a text
         const mainUrl = await browser.getUrl();
 
-        expect(mainUrl).to.include('showcase');
+        expect(mainUrl).to.include('showcase', `Url dosent contain 'showcase' text`);
 
     });
 
