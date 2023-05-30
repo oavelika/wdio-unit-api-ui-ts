@@ -5,7 +5,7 @@
 + UI tests are based on Web Driver IO with Mocha and Chai expectations. https://ej2.syncfusion.com/showcase/angular/appointmentplanner/
 + Tests reports are allure and mochawesome
 
-The project contains:
++ The project contains:
 
 ```
  ├── ...
@@ -27,11 +27,11 @@ The project contains:
 ```
 
 
-How to run the project:
++ How to run the project:
 
-Clone the ropository and run **`npm i`**
++ Clone the ropository and run **`npm i`**
 
-run unit tests: **`npm run unit`**
-run api tests: **`npm run api`**
-run UI tests: **`npm run wdio`**
++ run unit tests: **`npm run unit`**
++ run api tests: **`npm run api`**
++ run UI tests: **`npm run wdio`**
 
