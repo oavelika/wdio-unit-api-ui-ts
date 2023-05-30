@@ -1,21 +1,41 @@
 {
+    "ts-node": {
+        // Do not forget to `npm i -D tsconfig-paths`
+        "require": [
+            "tsconfig-paths/register"
+        ]
+    },
     "compilerOptions": {
         "module": "commonjs",
         "target": "es6",
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "sourceMap": true,
-        "outDir": "dist",
-        "baseUrl": ".",
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "@wdio/mocha-framework"
+        ],
+        "baseUrl": "./",
         "paths": {
-            "*": [
-                "src/*"
+            "@pages": [
+                "src/po/pages"
+            ],
+            "@components": [
+                "src/po/components"
+            ],
+            "@basepage": [
+                "src/po/pages/base.page.ts"
+            ],
+            "@basecomponent": [
+                "src/po/components/common/base.component"
             ]
-        }
+        },
+        "moduleResolution": "node"
     },
     "include": [
-        "api/**/*.ts",
-        "unit/**/*.ts",
+        "./src/*",
+        "./"
     ],
     "exclude": [
         "node_modules"
