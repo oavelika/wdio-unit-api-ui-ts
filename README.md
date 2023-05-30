@@ -7,30 +7,30 @@
 
 The project contains:
 
-&nbsp; ├── ...
-&nbsp; ├── api                     
-&nbsp; │   └── config            # Configuration folder that contains settings for runnung api
-&nbsp; │   │   └── data          # Test data for API 
-&nbsp; │   ├── helper            # The helper which handles parsing a request 
-&nbsp; │   └── specs             # Test files folder for API checks  
-&nbsp; └── app                   # Code as an example app for unit testing
-&nbsp; │       
-&nbsp; └── src                   # The main folder for UI checks
-&nbsp; │   ├── config            # WDIO configuration folder
-&nbsp; │   ├── po                
-&nbsp; │   │   ├── components    # Page Objects components      
-&nbsp; │   │   └── pages         # The app pages 
-&nbsp; │   └── tests             # Test files folder for UI checks   
-&nbsp; │   
-&nbsp; └── unit                  # Test files folder for UNIT checks  
+- ├── ...
+- ├── api                     
+- │   └── config            # Configuration folder that contains settings for runnung api
+- │   │   └── data          # Test data for API 
+- │   ├── helper            # The helper which handles parsing a request 
+- │   └── specs             # Test files folder for API checks  
+- └── app                   # Code as an example app for unit testing
+- │       
+- └── src                   # The main folder for UI checks
+- │   ├── config            # WDIO configuration folder
+- │   ├── po                
+- │   │   ├── components    # Page Objects components      
+- │   │   └── pages         # The app pages 
+- │   └── tests             # Test files folder for UI checks   
+- │   
+- └── unit                  # Test files folder for UNIT checks  
 
 
 
 How to run the project:
 
-Clone the ropository and run npm i
+Clone the ropository and run `npm i`
 
-run unit tests: npm run unit
-run api tests: npm run api
-run UI tests: npm run wdio
+run unit tests: `npm run unit`
+run api tests: `npm run api`
+run UI tests: `npm run wdio`
 
