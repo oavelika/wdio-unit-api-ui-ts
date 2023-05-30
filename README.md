@@ -1,27 +1,27 @@
-# This project is an example of automation unit, api and ui on JS using TS.
+# This project is an example of automation unit, API and UI on JS using TS.
 
-+ For Unit tests I'm using mocha, chai and checking the code inside app folder.
-+ For API tests - mocha, chai and axios and edpoint for checking https://jsonplaceholder.typicode.com/
-+ UI tests are based on Web Driver IO with Mocha and Chai expectations. https://ej2.syncfusion.com/showcase/angular/appointmentplanner/
-+ Tests reports are allure and mochawesome
++ For Unit tests I'm using mocha, chai to check the code inside the app folder.
++ For API tests I'm using mocha, chai, axios, and edpoint for checking https://jsonplaceholder.typicode.com/
++ UI tests are based on Web Driver IO with mocha and chai expectations. See https://ej2.syncfusion.com/showcase/angular/appointmentplanner/
++ I'm using allure and mochawesome for tests reports. 
 
 + The project contains:
 
 ```
  ├── ...
  ├── api                     
- │   └── config            # Configuration folder that contains settings for runnung api
+ │   └── config            # Configuration folder that contains settings for running API tests
  │   │   └── data          # Test data for API 
- │   ├── helper            # The helper which handles parsing a request 
+ │   ├── helper            # The helper which handles parsing data 
  │   └── specs             # Test files folder for API checks  
- └── app                   # Code as an example app for unit testing
+ └── app                   # Code used as an example for unit testing
  │       
- └── src                   # The main folder for UI checks
+ └── src                   # The main folder for UI
  │   ├── config            # WDIO configuration folder
  │   ├── po                
  │   │   ├── components    # Page Objects components      
  │   │   └── pages         # The app pages 
- │   └── tests             # Test files folder for UI checks   
+ │   └── tests             # Test files folder for UI checks
  │   
  └── unit                  # Test files folder for UNIT checks
 ```
