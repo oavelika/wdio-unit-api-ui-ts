@@ -1,7 +1,7 @@
 
 import { expect, assert } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
-import { page as pages } from '../po/pages';
+import { page as pages } from '@pages';
 
 describe("Test suite", () => {
 
@@ -44,8 +44,8 @@ describe("Test suite", () => {
         const errorEducation = await pages('doctors').addDoctorsModal.errorMessage('education').getText();
 
         await expect(errorName).to.be.equal('Enter valid name', `Valid Error name message doesnt exist`);
-        await expect(errorEmail).to.be.equal('Enter valid email, `Valid Error email message doesnt exist`');
-        await expect(errorPhone).to.be.equal('Enter valid mobile number, `Valid Error mobile message doesnt exist`');
+        await expect(errorEmail).to.be.equal('Enter valid email', `Valid Error email message doesnt exist`);
+        await expect(errorPhone).to.be.equal('Enter valid mobile number', `Valid Error mobile message doesnt exist`);
         await expect(errorEducation).to.be.equal('Enter valid education', `Valid Error education message doesnt exist`);
 
     });
