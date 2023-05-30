@@ -1,5 +1,5 @@
 
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
 import { page as pages } from '../po/pages';
 
@@ -38,144 +38,158 @@ describe("Test suite", () => {
         await pages('doctors').addDoctorsModal.errorMessage('email').waitForDisplayed();
         await pages('doctors').addDoctorsModal.errorMessage('education').waitForDisplayed();
 
-        await expect(pages('doctors').addDoctorsModal.errorMessage('name')).to.be.equal('Enter valid name');
-        await expect(pages('doctors').addDoctorsModal.errorMessage('email')).to.be.equal('Enter valid email');
-        await expect(pages('doctors').addDoctorsModal.errorMessage('phone')).to.be.equal('Enter valid mobile number');
-        await expect(pages('doctors').addDoctorsModal.errorMessage('education')).to.be.equal('Enter valid education');
+        const errorName = await pages('doctors').addDoctorsModal.errorMessage('name').getText();
+        const errorEmail = await pages('doctors').addDoctorsModal.errorMessage('email').getText();
+        const errorPhone = await pages('doctors').addDoctorsModal.errorMessage('phone').getText();
+        const errorEducation = await pages('doctors').addDoctorsModal.errorMessage('education').getText();
+
+        await expect(errorName).to.be.equal('Enter valid name');
+        await expect(errorEmail).to.be.equal('Enter valid email');
+        await expect(errorPhone).to.be.equal('Enter valid mobile number');
+        await expect(errorEducation).to.be.equal('Enter valid education');
 
     });
 
-    // it("Add a new doctor", async () => {
+    it("Add a new doctor", async () => {
 
-    //     // Open the page
-    //     // Open the Doctor page
-    //     // Click Add new doctor Btn
-    //     // Fill out all required fields 
-    //     // Verify that a new doctor has been created
+        // Open the page
+        // Open the Doctor page
+        // Click Add new doctor Btn
+        // Fill out all required fields 
+        // Verify that a new doctor has been created
 
-    //     const saveNewDoctorBtn = $('button:nth-of-type(2)');
+        const saveNewDoctorBtn = $('button:nth-of-type(2)');
 
-    //     const docName = 'John Smith';
-    //     const docEducation = 'MIT';
-    //     const docEmail = 'john@smith.com';
-    //     const docPhone = '9999999999';
+        const docName = 'John Smith';
+        const docEducation = 'MIT';
+        const docEmail = 'john@smith.com';
+        const docPhone = '9999999999';
 
-    //     await page('doctors').sideMenu.item('doctors').waitAndClick();
-    //     await page('doctors').doctorsListHeader.item('doctors').addNewDoctorBtn.waitAndClick();
-    //     await expect(page('doctors').addDoctorsModal.rootEl).toBeDisplayed();
+        await pages('doctors').sideMenu.item('doctors').waitAndClick();
+        await pages('doctors').doctorsListHeader.addNewDoctorBtn.waitAndClick();
+        await pages('doctors').addDoctorsModal.rootEl.waitForDisplayed();
 
-    //     await page('doctors').addDoctorsModal.input('name').setValue(docName);
-    //     await page('doctors').addDoctorsModal.input('phone').setValue(docPhone);
-    //     await page('doctors').addDoctorsModal.input('email').setValue(docEmail);
+        await pages('doctors').addDoctorsModal.input('name').setValue(docName);
+        await pages('doctors').addDoctorsModal.input('phone').setValue(docPhone);
+        await pages('doctors').addDoctorsModal.input('email').setValue(docEmail);
 
-    //     await page('doctors').addDoctorsModal.input('education').click();
+        await pages('doctors').addDoctorsModal.input('education').click();
 
-    //     await browser.action('key')
-    //         .down('M')
-    //         .down('I')
-    //         .down('T')
-    //         .perform();
+        await browser.action('key')
+            .down('M')
+            .down('I')
+            .down('T')
+            .perform();
 
-    //     await saveNewDoctorBtn.waitAndClick();
+        await saveNewDoctorBtn.waitAndClick();
 
-    //     await expect(page('doctors').specialistCard(8).name).toHaveText(`Dr. ${docName}`);
-    //     await expect(page('doctors').specialistCard(8).education).toHaveText(docEducation);
+        await pages('doctors').doctorsListHeader.item('doctors').waitForDisplayed();
 
-    // });
+        const getDoctorName = await pages('doctors').specialistCard(8).name.getText();
+        const getDoctorEducation = await pages('doctors').specialistCard(8).education.getText();
 
-    // it("Verify that a schedule calendar exists", async () => {
+        await expect(getDoctorName).to.be.equal(`Dr. ${docName}`);
+        await expect(getDoctorEducation).to.be.equal(docEducation);
 
-    //     // Open the page
-    //     // Open the Schedule page page
-    //     // Verify that the schedule calendar exist
+    });
 
-    //     await page('dashboard').sideMenu.item('schedule').waitAndClick();
-    //     await expect(page('schedule').calendar.rootEl).toBeDisplayed();
-    //     await expect(page('schedule').calendar.rootEl).toExist();
+    it("Verify that a schedule calendar exists", async () => {
 
-    // });
+        // Open the page
+        // Open the Schedule page page
+        // Verify that the schedule calendar exist
 
-    // it("Verify that a preference exists", async () => {
+        await pages('dashboard').sideMenu.item('schedule').waitAndClick();
+        await pages('schedule').calendar.rootEl.waitForDisplayed();
+        assert.exists(await pages('schedule').calendar.rootEl, 'calendar doesnt exist on the calendar page');
 
-    //     // Open the page
-    //     // Open the Schedule page page
-    //     // Verify that the schedule calendar exist
+    });
 
-    //     await page('dashboard').sideMenu.item('preference').waitAndClick();
-    //     await page('preference').preferenceControl.rootEl.waitForDisplayed();
+    it("Verify that a preference exists", async () => {
 
-    //     const defaultViewEl = await page('preference').preferenceControl.label('view').getValue();
-    //     await page('preference').preferenceControl.label('view').isEqual(defaultViewEl);
+        // Open the page
+        // Open the Schedule page page
+        // Verify that the schedule calendar exist
 
-    //     const calendarStartTimeEl = await page('preference').preferenceControl.label('startTime').getValue();
-    //     await page('preference').preferenceControl.label('startTime').isEqual(calendarStartTimeEl);
+        await pages('dashboard').sideMenu.item('preference').waitAndClick();
+        await pages('preference').preferenceControl.rootEl.waitForDisplayed();
 
-    //     const calendarEndTimeEl = await page('preference').preferenceControl.label('endTime').getValue();
-    //     await page('preference').preferenceControl.label('endTime').isEqual(calendarEndTimeEl);
+        const defaultViewEl = await pages('preference').preferenceControl.label('view').getText();
+        await expect(defaultViewEl).to.be.equal('Default View');
 
-    //     const slotDurationEl = await page('preference').preferenceControl.label('duration').getValue();
-    //     await page('preference').preferenceControl.label('duration').isEqual(slotDurationEl);
+        const calendarStartTimeEl = await pages('preference').preferenceControl.label('startTime').getText();
+        await expect(calendarStartTimeEl).to.be.equal('Calendar Start Time');
 
-    // });
+        const calendarEndTimeEl = await pages('preference').preferenceControl.label('endTime').getText();
+        await expect(calendarEndTimeEl).to.be.equal('Calendar End Time');
 
-    // it("Add a new patient", async () => {
+        const slotDurationEl = await pages('preference').preferenceControl.label('duration').getText();
+        await expect(slotDurationEl).to.be.equal('Slot Duration');
 
-    //     // Open the page
-    //     // Open the Patient page
-    //     // Click Add new patien Btn
-    //     // Fill out all required fields 
-    //     // Verify that a new doctor has been created
+    });
 
-    //     const patienName = 'Jim Smith';
-    //     const patientEmail = 'jim@smith.com';
-    //     const patientPhone = '9999999999';
+    it("Add a new patient", async () => {
 
-    //     await page('dashboard').sideMenu.item('patients').waitAndClick();
+        // Open the page
+        // Open the Patient page
+        // Click Add new patien Btn
+        // Fill out all required fields 
+        // Verify that a new doctor has been created
 
-    //     await page('patient').patientListHeader.item('patients').addNewPatientBtn.waitAndClick();
+        const patienName = 'Jim Smith';
+        const patientEmail = 'jim@smith.com';
+        const patientPhone = '9999999999';
 
-    //     await page('patient').addPatient.rootEl.waitForDisplayed();
-    //     await page('patient').addPatient.input('name').setValue(patienName);
-    //     await page('patient').addPatient.input('phone').setValue(patientPhone);
-    //     await page('patient').addPatient.input('email').setValue(patientEmail);
+        await pages('dashboard').sideMenu.item('patients').waitAndClick();
 
-    //     await page('patient').addPatient.saveBtn.waitAndClick();
+        await pages('patients').patientListHeader.addNewPatientBtn.waitAndClick();
 
-    //     await page('patient').patientListHeader.rootEl.waitForDisplayed();
-    //     await expect(page('patient').patientCard(7).name).toHaveText(patienName);
-    //     await expect(page('patient').patientCard(7).email).toHaveText(patientEmail);
+        await pages('patients').addPatient.rootEl.waitForDisplayed();
+        await pages('patients').addPatient.input('name').setValue(patienName);
+        await pages('patients').addPatient.input('phone').setValue(patientPhone);
+        await pages('patients').addPatient.input('email').setValue(patientEmail);
 
-    // });
+        await pages('patients').addPatient.saveBtn.waitAndClick();
 
-    // it("Verify that the Title exists", async () => {
+        await pages('patients').patientListHeader.rootEl.waitForDisplayed();
 
-    //     // Open the page
-    //     // Verify that the Title exists
+        const getPatientName = await pages('patients').patientCard(7).name.getText();
+        const getPatientEmail = await pages('patients').patientCard(7).email.getText();
 
-    //     await expect(browser).toHaveTitle('Appointment Planner - Syncfusion Angular Components Showcase App');
+        await expect(getPatientName).to.be.equal(patienName);
+        await expect(getPatientEmail).to.be.equal(patientEmail);
 
-    // });
+    });
 
-    // it("Verify that the List of patients exists", async () => {
+    it("Verify that the Title exists", async () => {
 
-    //     // Open the page
-    //     // Verify that the List of patients exists
+        // Open the page
+        // Verify that the Title exists
 
-    //     await page('dashboard').sideMenu.item('patients').waitAndClick();
+        const getTitle = await browser.getTitle();
+        expect(getTitle).to.be.equal('Appointment Planner - Syncfusion Angular Components Showcase App');
 
-    //     const listItems = await $$('[aria-rowindex]');
+    });
 
-    //     await expect(listItems).toBeElementsArrayOfSize(7);
+    it("Verify that the List of patients exists", async () => {
 
-    // });
+        // Open the page
+        // Verify that the List of patients exists
 
-    // it("Verify that the Link contains a text", async () => {
+        await pages('dashboard').sideMenu.item('patients').waitAndClick();
 
-    //     // Open the page
-    //     // Verify that the Link contains a text
+        const listItems = await $$('[aria-rowindex]');
+        expect(listItems).to.be.a('array').to.have.length(7);
+    });
 
-    //     await expect(browser).toHaveUrlContaining('showcase');
+    it("Verify that the Link contains a text", async () => {
 
-    // });
+        // Open the page
+        // Verify that the Link contains a text
+        const mainUrl = await browser.getUrl();
+
+        expect(mainUrl).to.include('showcase');
+
+    });
 
 });

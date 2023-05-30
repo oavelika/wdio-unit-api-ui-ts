@@ -5,7 +5,7 @@ export class PreferenceControlComponent extends BaseComponent {
         super('.preference-container');
     }
 
-    label(name: string) {
+    label(name) {
         const selectors = {
             view: "//div[.='Default ViewWeekly']",
             startTime: "//div[.='Calendar Start Time']",

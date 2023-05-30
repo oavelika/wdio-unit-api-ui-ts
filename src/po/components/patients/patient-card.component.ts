@@ -1,7 +1,7 @@
 import { BaseComponent } from '@basecomponent';
 
 export class PatientCardComponent extends BaseComponent {
-    constructor(id: number) {
+    constructor(id) {
         super(`.e-row[aria-rowindex="${id}"]`);
     }
 
@@ -15,8 +15,9 @@ export class PatientCardComponent extends BaseComponent {
     }
 
     get email() {
-        return this.rootEl.$('[aria-colindex="6"]');
+        return this.rootEl.$(`[aria-colindex="6"]`);
     }
+
 
 }
 

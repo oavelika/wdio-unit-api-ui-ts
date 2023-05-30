@@ -1,5 +1,5 @@
 export class BaseComponent {
-    rootSelector: string
+    rootSelector
 
     constructor(rootSelector) {
         this.rootSelector = rootSelector;

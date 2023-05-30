@@ -2,8 +2,8 @@ import { AddPatientComponent, PatientCardComponent, TitleComponent } from '@comp
 import { BasePage } from '@basepage';
 
 export class PatientsPage extends BasePage {
-    addPatient: object | string
-    patientListHeader: object | string
+    addPatient
+    patientListHeader
 
     constructor() {
         super("#/patients");
