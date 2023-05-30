@@ -7,7 +7,7 @@
 
 The project contains:
 
-- ├── ...
+```- ├── ...
 - ├── api                     
 - │   └── config            # Configuration folder that contains settings for runnung api
 - │   │   └── data          # Test data for API 
@@ -22,8 +22,8 @@ The project contains:
 - │   │   └── pages         # The app pages 
 - │   └── tests             # Test files folder for UI checks   
 - │   
-- └── unit                  # Test files folder for UNIT checks  
-
+- └── unit                  # Test files folder for UNIT checks
+```
 
 
 How to run the project:
