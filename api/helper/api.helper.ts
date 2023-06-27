@@ -6,7 +6,6 @@ const sendRequest = async (url: string, data = Object(null), method = String('ge
         const response = await axios({
             method,
             url: `${TEST_URL}${url}`,
-            headers: {},
             data
         });
         return {
